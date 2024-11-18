@@ -7,5 +7,15 @@ pipeline {
                 stash(name: "compiled-results", includes: "sources/*.py*")
             }
         }
+        stage("Run Socket") {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: "SOCKET-API", variable: "SOCKET-SECURITY-API-KEY")]) {
+                        sh "socketcli --target_path ."
+                    }
+                }
+
+            }
+        }
     }
 }
