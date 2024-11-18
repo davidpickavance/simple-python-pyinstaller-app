@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: "SOCKET-API", variable: "SOCKET-SECURITY-API-KEY")]) {
-                        sh "socketcli --target_path ."
+                        sh "python3 -m venv .venv && PATH=.venv/bin:$PATH && pip install socketsecurity --upgrade && socketcli --target_path ."
                     }
                 }
 
