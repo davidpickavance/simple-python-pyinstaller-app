@@ -10,7 +10,7 @@ pipeline {
         stage("Run Socket") {
             steps {
                 script {
-                    withCredentials([string(credentialsId: "SOCKET-API", variable: "SOCKET-SECURITY-API-KEY")]) {
+                    withCredentials([string(credentialsId: "SOCKET-API", variable: "SOCKET_SECURITY_API_KEY")]) {
                         sh "python3 -m venv .venv && PATH=.venv/bin:$PATH && pip install socketsecurity --upgrade && socketcli --target_path ."
                     }
                 }
